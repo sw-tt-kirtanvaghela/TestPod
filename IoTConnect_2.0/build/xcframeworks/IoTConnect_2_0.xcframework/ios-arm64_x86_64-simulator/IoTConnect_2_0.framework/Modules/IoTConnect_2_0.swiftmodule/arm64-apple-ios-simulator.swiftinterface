@@ -1,0 +1,266 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name IoTConnect_2_0
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import CocoaMQTT
+import CommonCrypto
+import Foundation
+@_exported import IoTConnect_2_0
+import Network
+import Swift
+import SystemConfiguration
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public struct IoTConnectConfig {
+  public init(cpId: Swift.String, uniqueId: Swift.String, env: IoTConnect_2_0.IoTCEnvironment, mqttConnectionType: IoTConnect_2_0.MqttConnectionType, debugConfig: IoTConnect_2_0.DebugConfig? = nil, mqttConfig: IoTConnect_2_0.MqttConfig? = nil, sdkOptions: IoTConnect_2_0.SDKClientOption?)
+}
+public struct DebugConfig {
+  public var discoveryUrl: Swift.String
+  public var debug: Swift.Bool
+}
+public struct MqttConfig {
+  public let certificateConfig: IoTConnect_2_0.CertificateConfig?
+  public let offlineStorageConfig: IoTConnect_2_0.OfflineStorageConfig?
+}
+public struct CertificateConfig {
+  public let certificatePath: Swift.String
+  public let certificatePassword: Swift.String
+}
+public struct OfflineStorageConfig {
+  public var availSpaceInMb: Swift.Int
+  public var fileCount: Swift.Int
+  public var disabled: Swift.Bool
+}
+public enum MqttConnectionType {
+  case userCredntialAuthentication
+  case certificateAuthentication
+  public static func == (a: IoTConnect_2_0.MqttConnectionType, b: IoTConnect_2_0.MqttConnectionType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum BrokerType : Swift.String {
+  case az
+  case aws
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct OfflineStorageOption {
+  public var availSpaceInMb: Swift.Int
+  public var fileCount: Swift.Int
+  public var disabled: Swift.Bool
+}
+public struct SDKClientOption {
+  public var ssl: IoTConnect_2_0.SSLOption
+  public var offlineStorage: IoTConnect_2_0.OfflineStorageOption
+  public var discoveryUrl: Swift.String?
+  public var debug: Swift.Bool
+  public var skipValidation: Swift.Bool
+  public var devicePK: Swift.String
+  public var brokerType: IoTConnect_2_0.BrokerType? {
+    get
+    set
+  }
+  public init()
+}
+public enum ReachabilityError : Swift.Error {
+  case failedToCreateWithAddress(Darwin.sockaddr, Swift.Int32)
+  case failedToCreateWithHostname(Swift.String, Swift.Int32)
+  case unableToSetCallback(Swift.Int32)
+  case unableToSetDispatchQueue(Swift.Int32)
+  case unableToGetFlags(Swift.Int32)
+}
+@available(*, unavailable, renamed: "Notification.Name.reachabilityChanged")
+public let ReachabilityChangedNotification: Foundation.NSNotification.Name
+extension Foundation.NSNotification.Name {
+  public static let reachabilityChanged: Foundation.Notification.Name
+}
+public class Reachability {
+  public typealias NetworkReachable = (IoTConnect_2_0.Reachability) -> ()
+  public typealias NetworkUnreachable = (IoTConnect_2_0.Reachability) -> ()
+  @available(*, unavailable, renamed: "Connection")
+  public enum NetworkStatus : Swift.CustomStringConvertible {
+    case notReachable, reachableViaWiFi, reachableViaWWAN
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: IoTConnect_2_0.Reachability.NetworkStatus, b: IoTConnect_2_0.Reachability.NetworkStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Connection : Swift.CustomStringConvertible {
+    @available(*, deprecated, renamed: "unavailable")
+    case none
+    case unavailable, wifi, cellular
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: IoTConnect_2_0.Reachability.Connection, b: IoTConnect_2_0.Reachability.Connection) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var whenReachable: IoTConnect_2_0.Reachability.NetworkReachable?
+  public var whenUnreachable: IoTConnect_2_0.Reachability.NetworkUnreachable?
+  @available(*, deprecated, renamed: "allowsCellularConnection")
+  final public let reachableOnWWAN: Swift.Bool
+  public var allowsCellularConnection: Swift.Bool
+  public var notificationCenter: Foundation.NotificationCenter
+  @available(*, deprecated, renamed: "connection.description")
+  public var currentReachabilityString: Swift.String {
+    get
+  }
+  @available(*, unavailable, renamed: "connection")
+  public var currentReachabilityStatus: IoTConnect_2_0.Reachability.Connection {
+    get
+  }
+  public var connection: IoTConnect_2_0.Reachability.Connection {
+    get
+  }
+  required public init(reachabilityRef: SystemConfiguration.SCNetworkReachability, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main)
+  convenience public init(hostname: Swift.String, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main) throws
+  convenience public init(queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main) throws
+  @objc deinit
+}
+extension IoTConnect_2_0.Reachability {
+  public func startNotifier() throws
+  public func stopNotifier()
+  @available(*, deprecated, message: "Please use `connection != .none`")
+  public var isReachable: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Please use `connection == .cellular`")
+  public var isReachableViaWWAN: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Please use `connection == .wifi`")
+  public var isReachableViaWiFi: Swift.Bool {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+}
+public enum CommandType : Swift.Int {
+  case DEVICE_COMMAND
+  case OTA_COMMAND
+  case MODULE_COMMAND
+  case REFRESH_ATTRIBUTE
+  case FIRMWARE_UPDATE
+  case REFRESH_EDGE_RULE
+  case REFRESH_CHILD_DEVICE
+  case DATA_FREQUENCY_CHANGE
+  case DEVICE_DELETED
+  case DEVICE_DISABLED
+  case DEVICE_RELEASED
+  case STOP_OPERATION
+  case START_HEART_RATE
+  case STOP_HEART_RATE
+  case PASSWORD_INFO_UPDATE
+  case DEVICE_INFO_UPDATE
+  case RULE_INFO_UPDATE
+  case DEVICE_CONNECTION_STATUS
+  case DATA_FREQUENCY_UPDATE
+  case STOP_SDK_CONNECTION
+  case IDENTITIY_RESPONSE
+  case GET_DEVICE_TEMPLATE_ATTRIBUTE
+  case GET_DEVICE_TEMPLATE_TWIN
+  case GET_EDGE_RULE
+  case GET_CHILD_DEVICE
+  case GET_PENDING_OTAS
+  case CREATE_DEVICE
+  case DELETE_DEVICE
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum IoTCEnvironment : Swift.String {
+  case DEV
+  case STAGE
+  case POC
+  case QA
+  case PROD
+  case AVNET
+  case PREQA
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension Swift.String {
+  public init(string s: Swift.String)
+}
+public struct SSLOption {
+  public var certificatePath: Swift.String?
+  public var password: Swift.String
+}
+public typealias GetDeviceCallBackBlock = (Any?) -> ()
+public typealias OnTwinChangeCallBackBlock = (Any?) -> ()
+public typealias GetAttributesCallbackBlock = (Any?) -> ()
+public typealias GetTwinCallBackBlock = (Any?) -> ()
+public typealias GetChildDevicesCallBackBlock = (Any?) -> ()
+public typealias OnDeviceCommandCallBackBlock = (Any?) -> ()
+public typealias OnAttributeChangeCallBackBlock = (Any?) -> ()
+public typealias OnDeviceChangeCommandCallBackBlock = (Any?) -> ()
+public typealias OnRuleChangeCommandCallBackBlock = (Any?) -> ()
+public typealias OnOTACommandCallBackBlock = (Any?) -> ()
+public typealias OnModuleCommandCallBackBlock = (Any?) -> ()
+public typealias CreateChildDeviceCallBackBlock = (Any?) -> ()
+public typealias DeleteChildDeviceCallBackBlock = (Any?) -> ()
+@_hasMissingDesignatedInitializers public class SDKClient {
+  public static let shared: IoTConnect_2_0.SDKClient
+  public func initialize(config: IoTConnect_2_0.IoTConnectConfig)
+  public func sendData(data: [Swift.String : Any])
+  public func sendLog(data: [Swift.String : Any]?)
+  public func sendAck(data: [[Swift.String : Any]], msgType: Swift.String)
+  public func sendAckCmd(ackGuid: Swift.String, status: Swift.String, msg: Swift.String = "", childId: Swift.String = "")
+  public func sendOTAAckCmd(ackGuid: Swift.String, status: Swift.String, msg: Swift.String = "", childId: Swift.String = "")
+  public func sendAckModule(ackGuid: Swift.String, status: Swift.String, msg: Swift.String = "", childId: Swift.String = "")
+  public func getAllTwins()
+  public func updateTwin(key: Swift.String, value: Any)
+  public func dispose(sdkconnection: Swift.String = "")
+  public func getAttributes(callBack: @escaping IoTConnect_2_0.GetAttributesCallbackBlock)
+  public func getTwins(callBack: @escaping IoTConnect_2_0.GetTwinCallBackBlock)
+  public func getChildDevices(callBack: @escaping IoTConnect_2_0.GetChildDevicesCallBackBlock)
+  public func getDeviceCallBack(deviceCallback: @escaping IoTConnect_2_0.GetDeviceCallBackBlock)
+  public func onDeviceCommand(commandCallback: @escaping IoTConnect_2_0.OnDeviceCommandCallBackBlock)
+  public func onAttrChangeCommand(commandCallback: @escaping IoTConnect_2_0.OnAttributeChangeCallBackBlock)
+  public func onDeviceChangeCommand(commandCallback: @escaping IoTConnect_2_0.OnDeviceChangeCommandCallBackBlock)
+  public func onRuleChangeCommand(commandCallback: @escaping IoTConnect_2_0.OnRuleChangeCommandCallBackBlock)
+  public func onOTACommand(commandCallback: @escaping IoTConnect_2_0.OnOTACommandCallBackBlock)
+  public func onModuleCommand(commandCallback: @escaping IoTConnect_2_0.OnDeviceCommandCallBackBlock)
+  public func onTwinChangeCommand(twinUpdateCallback: @escaping IoTConnect_2_0.OnTwinChangeCallBackBlock)
+  public func onFrequencyChangeCommand(dfValue: Swift.Int)
+  public func createChildDevice(deviceId: Swift.String, deviceTag: Swift.String, displayName: Swift.String, createChildCallBack: @escaping IoTConnect_2_0.CreateChildDeviceCallBackBlock)
+  public func deleteChildDevice(deviceId: Swift.String, deleteChildCallBack: @escaping IoTConnect_2_0.DeleteChildDeviceCallBackBlock)
+  @objc deinit
+}
+extension IoTConnect_2_0.MqttConnectionType : Swift.Equatable {}
+extension IoTConnect_2_0.MqttConnectionType : Swift.Hashable {}
+extension IoTConnect_2_0.BrokerType : Swift.Equatable {}
+extension IoTConnect_2_0.BrokerType : Swift.Hashable {}
+extension IoTConnect_2_0.BrokerType : Swift.RawRepresentable {}
+@available(*, unavailable, renamed: "Connection")
+extension IoTConnect_2_0.Reachability.NetworkStatus : Swift.Equatable {}
+@available(*, unavailable, renamed: "Connection")
+extension IoTConnect_2_0.Reachability.NetworkStatus : Swift.Hashable {}
+extension IoTConnect_2_0.Reachability.Connection : Swift.Equatable {}
+extension IoTConnect_2_0.Reachability.Connection : Swift.Hashable {}
+extension IoTConnect_2_0.CommandType : Swift.Equatable {}
+extension IoTConnect_2_0.CommandType : Swift.Hashable {}
+extension IoTConnect_2_0.CommandType : Swift.RawRepresentable {}
+extension IoTConnect_2_0.IoTCEnvironment : Swift.Equatable {}
+extension IoTConnect_2_0.IoTCEnvironment : Swift.Hashable {}
+extension IoTConnect_2_0.IoTCEnvironment : Swift.RawRepresentable {}
