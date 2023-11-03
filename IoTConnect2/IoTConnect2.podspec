@@ -41,7 +41,7 @@ Pod::Spec.new do |spec|
 
   # spec.public_header_files = "Classes/**/*.h"
 
-    spec.dependency "CocoaMQTT","2.1.3"
+    spec.dependency "CocoaMQTT","2.1.8"
     spec.swift_version = "5.0"
 
 end
