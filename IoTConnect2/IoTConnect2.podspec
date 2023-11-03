@@ -29,7 +29,7 @@ Pod::Spec.new do |spec|
   spec.author             = { "sw-tt-kirtanvaghela" => "135005218+sw-tt-kirtanvaghela@users.noreply.github.com" }
 
   # spec.platform     = :ios
-  # spec.platform     = :ios, "12.0"
+  # spec.platform     = :ios, "10.0"
 
 
   spec.source       = { :git => "https://github.com/sw-tt-kirtanvaghela/TestPod.git", :tag => "v1.0.0" }
