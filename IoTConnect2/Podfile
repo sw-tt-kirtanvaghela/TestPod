@@ -6,6 +6,6 @@ target 'IoTConnect2' do
   use_frameworks!
 
   # Pods for IoTConnect2
-	 pod 'CocoaMQTT','2.1.3'
+	 pod 'CocoaMQTT','2.1.8'
 
 end
