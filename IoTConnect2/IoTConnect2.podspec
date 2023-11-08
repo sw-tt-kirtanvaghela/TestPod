@@ -29,7 +29,7 @@ Pod::Spec.new do |spec|
   spec.author             = { "sw-tt-kirtanvaghela" => "135005218+sw-tt-kirtanvaghela@users.noreply.github.com" }
 
   # spec.platform     = :ios
-  # spec.platform     = :ios, "11.0"
+  # spec.platform     = :ios, "12.0"
 
 
   spec.source       = { :git => "https://github.com/sw-tt-kirtanvaghela/TestPod.git" }
@@ -41,7 +41,7 @@ Pod::Spec.new do |spec|
 
   # spec.public_header_files = "Classes/**/*.h"
 
-    spec.dependency "CocoaMQTT","~> 2.1.3"
+    spec.dependency "CocoaMQTT", :git => "https://github.com/emqx/CocoaMQTT.git", :tag => "2.1.8"
     spec.swift_version = "5.0"
 
 end
