@@ -33,7 +33,7 @@ Pod::Spec.new do |spec|
    spec.platform     = :ios, "12.0"
 
   # spec.ios.vendored_frameworks = "IoTConnect_2.0.framework"
-  spec.source = { :git => "https://github.com/sw-tt-kirtanvaghela/TestPod.git" }
+  spec.source = { :git => "https://github.com/sw-tt-kirtanvaghela/TestPod.git", :tag => "v1.0" }
   spec.source_files  = "IoTConnect2/**/*"
 
  # spec.exclude_files = "Classes/Exclude"
