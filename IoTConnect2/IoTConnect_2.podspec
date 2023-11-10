@@ -21,7 +21,7 @@ Pod::Spec.new do |spec|
 
   spec.description  = "This is second version of IoTConnect SDK"
 
-  spec.homepage     = "https://github.com/sw-tt-kirtanvaghela/TestPod.gi"
+  spec.homepage     = "https://github.com/sw-tt-kirtanvaghela/TestPod.git"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
   spec.license      = "MIT"
@@ -39,5 +39,5 @@ Pod::Spec.new do |spec|
   spec.exclude_files = "Classes/Exclude"
 
   spec.dependency "CocoaMQTT"
-
+  spec.swift_version = "5.0"
 end
