@@ -36,7 +36,7 @@ Pod::Spec.new do |spec|
   spec.source = { :git => "https://github.com/sw-tt-kirtanvaghela/TestPod.git" }
   spec.source_files  = "IoTConnect2/**/*"
 
-  spec.exclude_files = "Classes/Exclude"
+ # spec.exclude_files = "Classes/Exclude"
 
   spec.dependency "CocoaMQTT"
   spec.swift_version = "5.0"
